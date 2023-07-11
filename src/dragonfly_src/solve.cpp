@@ -48,12 +48,23 @@ bool solve(sData* data)
 	  // advance time
 	  curTime+=data->dt;
 	  std::cout << "\r\t Solving ... current Time: " << curTime << " s         \n";
-	  
+
+       calcFlux(data);
 	  // FIXME
 	  // M2: solve scalar transport equation
       for(int cellId=0; cellId < data->nCells; cellId++){
           curCell = &data->cells[cellId];
+          if ((curCell->bType_sc == INNERCELL) ||
+              (curCell->bType_sc == NEUMANN)) {
+              double sum_flux =
+                      (curCell->faces[YP]->numFlux - curCell->faces[YM]->numFlux) *
+                      curCell->faces[YM]->dx +
+                      (curCell->faces[XP]->numFlux - curCell->faces[XM]->numFlux) *
+                      curCell->faces[XM]->dy;
 
+              // Explizites Euler-Verfahren
+              curCell->sc -= (data->dt / (data->rho * curCell->vol)) * sum_flux;
+          }
       }
 	  
 	  // FIXME
@@ -82,10 +93,24 @@ void calcFlux(sData* data)
 
    for(int fId=0; fId<data->nFaces; fId++) {
       curFace=&data->faces[fId];
+
+      double diffF, convF = 0;
 	  
       // FIXME M2
 	  // compute numerical flux over each face
-	  
+	  if(curFace->bType_u != SOLID){
+          if(curFace->dx < 1e-10){
+              convF = 0.5*data->rho*curFace->u * (curFace->neighCells[P]->sc + curFace->neighCells[M]->sc);
+              diffF = -data->alpha * (curFace->neighCells[P]->sc - curFace->neighCells[M]->sc)
+                      / (curFace->neighCells[P]->x - curFace->neighCells[M]->x);
+          }
+          else{
+              convF = 0.5*data->rho*curFace->v * (curFace->neighCells[P]->sc + curFace->neighCells[M]->sc);
+              diffF = -data->alpha * (curFace->neighCells[P]->sc - curFace->neighCells[M]->sc)
+                      / (curFace->neighCells[P]->y - curFace->neighCells[M]->y);
+          }
+      }
+      curFace->numFlux = convF + diffF;
    }
 }
 
