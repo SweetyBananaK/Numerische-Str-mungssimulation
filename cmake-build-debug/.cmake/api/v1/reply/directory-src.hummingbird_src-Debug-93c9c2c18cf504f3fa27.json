@@ -1,0 +1,63 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"src/hummingbird_src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 22,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "D:/numerische-str-templates-master/bin",
+			"paths" : 
+			[
+				"D:/numerische-str-templates-master/run/Hummingbird.exe"
+			],
+			"targetId" : "Hummingbird::@a4775cc7434dc232c44a",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "D:/numerische-str-templates-master/run",
+			"paths" : 
+			[
+				"D:/numerische-str-templates-master/run/Hummingbird.exe"
+			],
+			"targetId" : "Hummingbird::@a4775cc7434dc232c44a",
+			"targetIndex" : 1,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/hummingbird_src",
+		"source" : "src/hummingbird_src"
+	}
+}

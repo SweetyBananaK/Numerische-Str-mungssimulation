@@ -1,0 +1,63 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"src/spider_src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "D:/numerische-str-templates-master/bin",
+			"paths" : 
+			[
+				"D:/numerische-str-templates-master/run/Spider.exe"
+			],
+			"targetId" : "Spider::@53b69189f469c911e162",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "D:/numerische-str-templates-master/run",
+			"paths" : 
+			[
+				"D:/numerische-str-templates-master/run/Spider.exe"
+			],
+			"targetId" : "Spider::@53b69189f469c911e162",
+			"targetIndex" : 2,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "src/spider_src",
+		"source" : "src/spider_src"
+	}
+}
